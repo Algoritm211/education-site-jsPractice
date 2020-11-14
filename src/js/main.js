@@ -1,3 +1,4 @@
+import Difference from './modules/difference'
 import VideoPlayer from './modules/playVideo'
 import MainSlider from './modules/slider/slider-main'
 import SliderMini from './modules/slider/slider-mini'
@@ -38,4 +39,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const video = new VideoPlayer('.showup .play', '.overlay')
   video.init()
+
+  const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
+  difference.init()
+  
 })
