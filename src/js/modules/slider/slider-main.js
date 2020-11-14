@@ -1,10 +1,9 @@
-class Slider {
+import Slider from "./slider";
 
-  constructor(page, buttons) {
-    this.page = document.querySelector(page)
-    this.slides = this.page.children
-    this.buttons = document.querySelectorAll(buttons)
-    this.slideIndex = 1
+
+export default class MainSlider extends Slider {
+  constructor ({page, buttons}) {
+    super({page, buttons})
   }
 
   showSlides(itemIndex) {
@@ -58,6 +57,3 @@ class Slider {
     this.showSlides(this.slideIndex)
   }
 }
-
-
-export default Slider
