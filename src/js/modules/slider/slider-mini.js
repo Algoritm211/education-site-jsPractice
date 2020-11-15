@@ -26,39 +26,28 @@ export default class SliderMini extends Slider {
     }
   }
 
+  moveButtonsToEnd() {
+    this.slides.forEach((slide, index) => {
+      if (slide.tagName === 'BUTTON') {
+        this.container.appendChild(this.slides[index])
+      }
+    })
+  }
+
   nextSlide() {
-    if (this.slides[1].tagName == 'BUTTON' && this.slides[2].tagName == 'BUTTON') {
-      this.container.appendChild(this.slides[0]) // Slide
-      this.container.appendChild(this.slides[1]) // Btn
-      this.container.appendChild(this.slides[2]) // Btn
-      this.decorateSlides()
-    } else if (this.slides[1].tagName == 'BUTTON') {
-      this.container.appendChild(this.slides[0]) // Slide
-      this.container.appendChild(this.slides[1]) // Btn
-      this.decorateSlides()
-    } else {
       this.container.appendChild(this.slides[0])
       this.decorateSlides()
-    }
+      this.moveButtonsToEnd()
   }
 
   bindTriggers() {
     this.next.addEventListener('click', () => this.nextSlide())
 
     this.prev.addEventListener('click', () => {
-
-      for (let i = this.slides.length - 1; i > 0; i--) {
-        if (this.slides[i].tagName !== 'BUTTON') {
-          let active = this.slides[i]
-          this.container.insertBefore(active, this.slides[0])
-          this.decorateSlides()
-          break
-        } 
-      }
-
-      let active = this.slides[this.slides.length - 1]
-      this.container.insertBefore(active, this.slides[0])
+      let active = this.slides[0]
+      this.container.insertBefore(active, this.slides[length - 1])
       this.decorateSlides()
+      this.moveButtonsToEnd()
     })
   }
 

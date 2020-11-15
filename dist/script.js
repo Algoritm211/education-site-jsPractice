@@ -3220,59 +3220,45 @@ function (_Slider) {
       }
     }
   }, {
+    key: "moveButtonsToEnd",
+    value: function moveButtonsToEnd() {
+      var _this2 = this;
+
+      this.slides.forEach(function (slide, index) {
+        if (slide.tagName === 'BUTTON') {
+          _this2.container.appendChild(_this2.slides[index]);
+        }
+      });
+    }
+  }, {
     key: "nextSlide",
     value: function nextSlide() {
-      if (this.slides[1].tagName == 'BUTTON' && this.slides[2].tagName == 'BUTTON') {
-        this.container.appendChild(this.slides[0]); // Slide
-
-        this.container.appendChild(this.slides[1]); // Btn
-
-        this.container.appendChild(this.slides[2]); // Btn
-
-        this.decorateSlides();
-      } else if (this.slides[1].tagName == 'BUTTON') {
-        this.container.appendChild(this.slides[0]); // Slide
-
-        this.container.appendChild(this.slides[1]); // Btn
-
-        this.decorateSlides();
-      } else {
-        this.container.appendChild(this.slides[0]);
-        this.decorateSlides();
-      }
+      this.container.appendChild(this.slides[0]);
+      this.decorateSlides();
+      this.moveButtonsToEnd();
     }
   }, {
     key: "bindTriggers",
     value: function bindTriggers() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.next.addEventListener('click', function () {
-        return _this2.nextSlide();
+        return _this3.nextSlide();
       });
       this.prev.addEventListener('click', function () {
-        for (var i = _this2.slides.length - 1; i > 0; i--) {
-          if (_this2.slides[i].tagName !== 'BUTTON') {
-            var _active = _this2.slides[i];
+        var active = _this3.slides[0];
 
-            _this2.container.insertBefore(_active, _this2.slides[0]);
+        _this3.container.insertBefore(active, _this3.slides[length - 1]);
 
-            _this2.decorateSlides();
+        _this3.decorateSlides();
 
-            break;
-          }
-        }
-
-        var active = _this2.slides[_this2.slides.length - 1];
-
-        _this2.container.insertBefore(active, _this2.slides[0]);
-
-        _this2.decorateSlides();
+        _this3.moveButtonsToEnd();
       });
     }
   }, {
     key: "init",
     value: function init() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.container.style.cssText = "\n      display: flex;\n      flex-wrap: wrap;\n      overflow: hidden;\n      align-items: flex-start\n    ";
       this.bindTriggers();
@@ -3280,7 +3266,7 @@ function (_Slider) {
 
       if (this.autoplay) {
         setInterval(function () {
-          return _this3.nextSlide();
+          return _this4.nextSlide();
         }, 5000);
       }
     }
