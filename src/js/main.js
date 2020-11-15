@@ -11,6 +11,12 @@ window.addEventListener('DOMContentLoaded', () => {
   })
   slider.render()
 
+  const blockSlider = new MainSlider({
+    container: '.moduleapp',
+    buttons: '.next'
+  })
+  blockSlider.render()
+
   const showUpSlider = new SliderMini({
     container: '.showup__content-slider',
     next: '.showup__next',
@@ -40,6 +46,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const video = new VideoPlayer('.showup .play', '.overlay')
   video.init()
+  const videoPlayerWithBlock = new VideoPlayer('.module__video-item .play', '.overlay')
+  videoPlayerWithBlock.init()
 
   const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
   difference.init()
