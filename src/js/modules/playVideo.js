@@ -93,9 +93,6 @@ class VideoPlayer {
       this.bindCloseBtn()
     }
   }
-
-
 }
-
 
 export default VideoPlayer

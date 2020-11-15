@@ -1,6 +1,8 @@
 import Difference from './modules/difference'
+import Download from './modules/download'
 import Form from './modules/forms'
 import VideoPlayer from './modules/playVideo'
+import ShowInfo from './modules/showInfo'
 import MainSlider from './modules/slider/slider-main'
 import SliderMini from './modules/slider/slider-mini'
 
@@ -54,4 +56,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const form = new Form('.form')
   form.init()
+
+  const showInfo = new ShowInfo('.plus__content')
+  showInfo.init()
+
+  const download = new Download('.download')
+  download.init()
 })
