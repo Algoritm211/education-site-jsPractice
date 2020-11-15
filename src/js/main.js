@@ -1,4 +1,5 @@
 import Difference from './modules/difference'
+import Form from './modules/forms'
 import VideoPlayer from './modules/playVideo'
 import MainSlider from './modules/slider/slider-main'
 import SliderMini from './modules/slider/slider-mini'
@@ -42,5 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
   difference.init()
-  
+
+  const form = new Form('.form')
+  form.init()
 })

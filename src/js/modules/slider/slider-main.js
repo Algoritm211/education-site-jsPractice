@@ -41,8 +41,11 @@ export default class MainSlider extends Slider {
   }
 
   render() {
-    this.hanson = document.querySelector('.hanson')
-    this.buttons.forEach(item => {
+    try {
+      try {
+        this.hanson = document.querySelector('.hanson')  
+      } catch (error) {}
+      this.buttons.forEach(item => {
       item.addEventListener('click', () => {
         this.changeSlides(1)
       })
@@ -55,5 +58,6 @@ export default class MainSlider extends Slider {
     })
 
     this.showSlides(this.slideIndex)
+    } catch (error) {}
   }
 }
